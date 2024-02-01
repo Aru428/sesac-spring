@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<form action="/practiceInfo" method="post" id="form_vo" >
+    이름 <input type="text" name="name" required />
+    <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="남자" required /> 남자
+        <input type="radio" name="gender" value="여자" /> 여자
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>생년월일</legend>
+        <select name="year">
+            <option  th:each="year : ${#numbers.sequence(1970, 2023)}"
+                     th:value="${year}" th:text="${year}"></option>
+        </select> 년
+        <select name="month">
+            <option  th:each="month : ${#numbers.sequence(1, 12)}"
+                     th:value="${month}" th:text="${month}"></option>
+        </select> 월
+        <select name="day">
+            <option  th:each="day : ${#numbers.sequence(1, 31)}"
+                     th:value="${day}" th:text="${day}"></option>
+        </select> 일
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="interest" value="여행"> 여행
+        <input type="checkbox" name="interest" value="패션"> 패션
+        <input type="checkbox" name="interest" value="음식"> 음식
+    </fieldset>
+    <br />
+    <button type="button">회원가입</button>
+    <hr />
+    <button type="button" onclick="voPractice1();">동적폼전송 실습</button>
+</form>
+
+<script>
+    function voPractice1() {
+        var form = document.getElementById('form_vo');
+        axios.post(`/practice/axios`, {name: form.name.value})
+        .then((res)=>{
+            console.log( res.data );
+        });
+    }
+</script>
+</body>
+</html>
