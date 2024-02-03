@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- xml 파일 작성법 -->
+<mapper namespace="com.sesac.sesacspring.mapper.UserMapper">
+    <select id="retrieveAll" resultType="com.sesac.sesacspring.domain.User">
+        SELECT user.* FROM user
+    </select>
+</mapper>

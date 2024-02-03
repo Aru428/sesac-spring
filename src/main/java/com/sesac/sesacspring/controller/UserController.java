@@ -1,49 +1,50 @@
 package com.sesac.sesacspring.controller;
 
-import com.sesac.sesacspring.dto.UserDTO;
-import org.springframework.stereotype.Controller;
+import com.sesac.sesacspring.DTO.UserDTO;
+import com.sesac.sesacspring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import java.util.List;
 
-
-@Controller
+// Mybatis
+@RestController
+@RequestMapping("/user") // -> url : /user
 public class UserController {
-    HashMap<String, Person> users = new HashMap<>();
+    // C, R
+    // 1. Table 생성 완료 (user)
+    // 2. domain 만들기 (domain/user)
+    // 3. mapper 만들기
+    // 4. service 만들기
+    // 5. controller 만들기
 
-    // 회원가입 페이지 렌더
-    @GetMapping("/users")
-    public String getSignUpPage() {
-        return "users";
+    @Autowired
+    UserService userService;
+
+    @GetMapping("/all") // -> url : /user/all
+    public List<UserDTO> getUser()  {
+        List<UserDTO> result = userService.retrieveAll();
+        return result;
     }
 
-    // 회원가입
-    @PostMapping("/users/auth")
-    @ResponseBody
-    public String postUser(UserDTO userDTO) {
-        if (users.containsKey(userDTO.getName()))
-            return "이미 등록된 회원입니다.";
-        else {
-            users.put(userDTO.getName(), new Person(userDTO.getName(), userDTO.getAge()));
-            return userDTO.getName() + "님 회원가입 성공!";
-        }
+    @GetMapping("/user") // -> url : /user/user
+    public String getUserInsert(@RequestParam String name, @RequestParam String nickname) {
+        userService.createUser(name, nickname);
+        return "Success";
     }
 
-    // 로그인
-    @PostMapping("/users/login")
-    @ResponseBody
-    public String postLogin(UserDTO userDTO) {
-        if (users.containsKey(userDTO.getName())) {
-            Person user = users.get(userDTO.getName());
-            if (user.getAge() == userDTO.getAge()) { // age 가 password 라고 가정
-                return userDTO.getName() + "님 환영합니다!";
-            } else {
-                return "비밀번호가 잘못 입력되었습니다.";
-            }
-        } else {
-            return "존재하지 않는 ID 입니다.";
-        }
+    @GetMapping("/update")
+    public String updateUserNickname(@RequestParam int id, @RequestParam String nickname) {
+        userService.updateUser(id, nickname);
+        return "nickname update success!";
+    }
+
+    @GetMapping("/delete")
+    public String deleteUser(@RequestParam int id) {
+        userService.deleteUser(id);
+        return "delete success!";
     }
 }

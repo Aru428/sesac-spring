@@ -1,4 +1,4 @@
-package com.sesac.sesacspring.dto;
+package com.sesac.sesacspring.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
     private String name;
-    private int age;
+    private String nickname;
 }
