@@ -1,12 +1,11 @@
-package com.sesac.sesacspring.domain;
+package com.sesac.sesacspring.mybatis.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class User {
-    private int id;
+public class UserDTO {
     private String name;
     private String nickname;
 }

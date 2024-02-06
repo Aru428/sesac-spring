@@ -1,12 +1,14 @@
-package com.sesac.sesacspring.DTO;
+package com.sesac.sesacspring.mybatis.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardDTO {
+public class Board {
+    private int id;
     private String title;
     private String content;
     private String writer;
+    private String registered;
 }

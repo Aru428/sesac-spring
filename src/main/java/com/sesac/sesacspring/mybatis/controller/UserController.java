@@ -1,7 +1,7 @@
-package com.sesac.sesacspring.controller;
+package com.sesac.sesacspring.mybatis.controller;
 
-import com.sesac.sesacspring.DTO.UserDTO;
-import com.sesac.sesacspring.service.UserService;
+import com.sesac.sesacspring.mybatis.DTO.UserDTO;
+import com.sesac.sesacspring.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
