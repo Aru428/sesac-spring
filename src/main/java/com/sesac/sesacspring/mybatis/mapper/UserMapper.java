@@ -1,7 +1,6 @@
 package com.sesac.sesacspring.mybatis.mapper;
 
-import com.sesac.sesacspring.mybatis.domain.User;
-import com.sesac.sesacspring.mybatis.domain.User;
+import com.sesac.sesacspring.mybatis.domain.User2;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,7 +14,7 @@ public interface UserMapper {
 
     // xml 파일을 읽어서 실행하겠다.
     // read
-    List<User> retrieveAll();
+    List<User2> retrieveAll();
 
     // sql 문 정의
     // create

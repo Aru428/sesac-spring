@@ -1,7 +1,7 @@
 package com.sesac.sesacspring.mybatis.service;
 
 import com.sesac.sesacspring.mybatis.DTO.UserDTO;
-import com.sesac.sesacspring.mybatis.domain.User;
+import com.sesac.sesacspring.mybatis.domain.User2;
 import com.sesac.sesacspring.mybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserService {
+public class User2Service {
     // UserMapper 호출
     // 1. 생성자 사용
 //    private final UserMapper userMapper;
@@ -27,11 +27,11 @@ public class UserService {
         // userMapper 의 retrieveAll() 을 실행한 후 받아온 List<User>
         // List<UserDTO>에 담아서 반환
 
-        List<User> users = userMapper.retrieveAll();
+        List<User2> users = userMapper.retrieveAll();
         List<UserDTO> result = new ArrayList<>();
 
         // for 문을 이용해 List<User> -> List<UserDTO>
-        for (User user : users) {
+        for (User2 user : users) {
             UserDTO userDTO = new UserDTO();
             userDTO.setName(user.getName());
             userDTO.setNickname(user.getNickname());

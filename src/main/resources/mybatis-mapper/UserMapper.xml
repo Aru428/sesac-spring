@@ -4,7 +4,7 @@
 
 <!-- xml 파일 작성법 -->
 <mapper namespace="com.sesac.sesacspring.mybatis.mapper.UserMapper">
-    <select id="retrieveAll" resultType="com.sesac.sesacspring.mybatis.domain.User">
+    <select id="retrieveAll" resultType="com.sesac.sesacspring.mybatis.domain.User2">
         SELECT user.* FROM user
     </select>
 </mapper>
